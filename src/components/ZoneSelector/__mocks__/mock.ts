@@ -1,6 +1,7 @@
 import { GET_AREAS_QUERY, GET_CITIES_V2_QUERY } from '../../../graphql/queries';
+import { FormAreaState, FormDisplayState, QueryResponse } from 'components/ZoneSelector/types';
 
-export const mockFormState = [
+export const mockFormState: FormAreaState[] = [
   {
     city: 'sg-singapore',
     regions: [
@@ -21,7 +22,7 @@ export const mockFormState = [
   },
 ];
 
-export const mockDisplayState = {
+export const mockDisplayState: FormDisplayState = {
   cities: [{ id: 'sg-singapore', indeterminate: true }],
   regions: [
     { id: '4829894c-61a5-437a-a1b4-1d64b4a4a38b', indeterminate: true },
@@ -35,7 +36,7 @@ export const mockDisplayState = {
   ],
 };
 
-export const mockDisplayStateWithAllDistricts = {
+export const mockDisplayStateWithAllDistricts: FormDisplayState = {
   cities: [{ id: 'sg-singapore', indeterminate: true }],
   regions: [
     { id: '4829894c-61a5-437a-a1b4-1d64b4a4a38b', indeterminate: true },
@@ -135,7 +136,7 @@ export const mockDisplayStateWithAllDistricts = {
   ],
 };
 
-export const mockAPIResponse = [
+export const mockAPIResponse: QueryResponse[] = [
   {
     region: {
       id: '38d72412-d42a-40f4-9c1d-38f653ba04a7',

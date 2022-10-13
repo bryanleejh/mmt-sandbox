@@ -1,27 +1,30 @@
-import React, { useState, useEffect } from 'react';
-import { isEmpty, map, filter, equals, length, clone, find, propEq, reject } from 'ramda';
 import './ZoneSelector.scss';
-import { Skeleton } from '@deliveryhero/armor';
-import {
-  Zone,
-  City,
-  ApiDisplayData,
-  FormDisplayState,
-  DisplayState,
-  IZoneContext,
-  ZoneSelectorProps,
-  QueryResponse,
-} from './types';
-import { hasIndeterState, transformStateToUI, transformUIToState, updateIndeterState } from './helper';
-import ZonePanel from './ZonePanel';
-import { defaultZoneContext } from './default';
-import { DisplayType } from './enums';
-import { ApolloProvider, useLazyQuery } from '@apollo/react-hooks';
-import { Country, getActiveCountry } from '../../utils/country';
-import { GET_AREAS_QUERY, GET_CITIES_V2_QUERY } from '../../graphql/queries';
-import { createApolloClient } from '../../graphql/client';
 
-export const ZoneContext = React.createContext<IZoneContext>(defaultZoneContext);
+import { clone, equals, filter, find, isEmpty, length, map, propEq, reject } from 'ramda';
+import React, { useEffect, useState } from 'react';
+
+import { ApolloProvider, useLazyQuery } from '@apollo/client';
+import { Bootstrap, Loading } from '@deliveryhero/mmt-design-system';
+
+import { createApolloClient } from '../../graphql/client';
+import { GET_AREAS_QUERY, GET_CITIES_V2_QUERY } from '../../graphql/queries';
+import { Country, getActiveCountry } from '../../utils/country';
+import { ZoneContext } from './context';
+import { DisplayType } from './enums';
+import { hasIndeterState, transformStateToUI, transformUIToState, updateIndeterState } from './helper';
+import {
+  ApiDisplayData,
+  City,
+  DisplayState,
+  FormDisplayState,
+  IZoneContext,
+  QueryResponse,
+  Zone,
+  ZoneSelectorProps,
+} from './types';
+import ZonePanel from './ZonePanel';
+
+const { Form } = Bootstrap;
 
 const ZoneSelector: React.FC<ZoneSelectorProps> = ({
   selectedValues,
@@ -45,6 +48,7 @@ const ZoneSelector: React.FC<ZoneSelectorProps> = ({
   const [rawApiData, setRawApiData] = useState<QueryResponse[]>([]);
   const [selectedCity, setSelectedCity] = useState('');
   const [selectedRegion, setSelectedRegion] = useState('');
+  const [searchedCity, setSearchedCity] = useState('');
 
   const setCities = (citiesV2: City[]) => {
     setInitialLoad(false);
@@ -57,30 +61,29 @@ const ZoneSelector: React.FC<ZoneSelectorProps> = ({
   };
 
   const setAreas = (areas: QueryResponse[]) => {
+    setRawApiData(areas);
+    const regions = map(area => area.region, areas);
+    setApiDisplayData(state => ({
+      ...state,
+      regions,
+    }));
     setInitialLoad(false);
-    if (!isEmpty(areas) && isEmpty(apiDisplayData.regions)) {
-      setRawApiData(areas);
-      const regions = map(area => area.region, areas);
-      setApiDisplayData(state => ({
-        ...state,
-        regions,
-      }));
-    }
   };
 
-  const [loadCities, { loading: cityLoading }] = useLazyQuery<{ citiesV2: City[] }, { country: Country }>(
-    GET_CITIES_V2_QUERY,
-    {
-      variables: {
-        country: getActiveCountry(),
-      },
-      onCompleted: ({ citiesV2 }) => {
-        setCities(citiesV2);
-      },
-    }
-  );
+  const [loadCities, { loading: cityLoading, data: citiesData }] = useLazyQuery<
+    { citiesV2: City[] },
+    { country: Country }
+  >(GET_CITIES_V2_QUERY, {
+    variables: {
+      country: getActiveCountry(),
+    },
+  });
 
-  const [loadAreas, { loading: areaLoading }] = useLazyQuery<
+  useEffect(() => {
+    !overrideLoadCities && citiesData && setCities(citiesData.citiesV2);
+  }, [citiesData]); // eslint-disable-line react-hooks/exhaustive-deps
+
+  const [loadAreas, { loading: areaLoading, data: areasData }] = useLazyQuery<
     { areas: QueryResponse[] },
     { country: Country; city: string }
   >(GET_AREAS_QUERY, {
@@ -88,10 +91,11 @@ const ZoneSelector: React.FC<ZoneSelectorProps> = ({
       country: getActiveCountry(),
       city: selectedCity,
     },
-    onCompleted: ({ areas }) => {
-      setAreas(areas);
-    },
   });
+
+  useEffect(() => {
+    !overrideLoadAreas && areasData && setAreas(areasData.areas);
+  }, [areasData]); // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     const transformedState = transformStateToUI(selectedValues, selectedCity, selectedRegion, rawApiData);
@@ -111,6 +115,7 @@ const ZoneSelector: React.FC<ZoneSelectorProps> = ({
         });
       } else {
         loadCities();
+        setInitialLoad(false);
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -118,18 +123,18 @@ const ZoneSelector: React.FC<ZoneSelectorProps> = ({
 
   // Fetch Regions
   useEffect(() => {
-    if (isEmpty(apiDisplayData.regions) && selectedCity) {
-      setInitialLoad(true);
-      if (overrideLoadAreas) {
-        overrideLoadAreas(selectedCity).then(areas => {
-          setAreas(areas);
-        });
-      } else {
-        loadAreas();
-      }
+    if (!selectedCity) return;
+    setInitialLoad(true);
+    if (overrideLoadAreas) {
+      overrideLoadAreas(selectedCity).then(areas => {
+        setAreas(areas);
+      });
+    } else {
+      loadAreas();
+      setInitialLoad(false);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedCity, apiDisplayData.regions]);
+  }, [selectedCity]);
 
   useEffect(() => {
     if (selectedRegion && rawApiData) {
@@ -150,9 +155,9 @@ const ZoneSelector: React.FC<ZoneSelectorProps> = ({
   const returnSelectedValues = (UIState: FormDisplayState) => {
     const newFormState = transformUIToState(
       {
-        ...UIState,
         selectedCity,
         selectedRegion,
+        ...UIState,
         isLoading,
         totalRegions: length(apiDisplayData.regions),
         totalDistricts: length(apiDisplayData.districts),
@@ -415,6 +420,8 @@ const ZoneSelector: React.FC<ZoneSelectorProps> = ({
     const { checked } = e.target;
     const { slug } = item;
 
+    setSelectedCity('');
+
     let districts = clone(formDisplayState.districts);
     let regions = clone(formDisplayState.regions);
     let cities = clone(formDisplayState.cities);
@@ -447,6 +454,7 @@ const ZoneSelector: React.FC<ZoneSelectorProps> = ({
       cities,
       regions,
       districts,
+      selectedCity: '',
     });
   };
 
@@ -491,8 +499,13 @@ const ZoneSelector: React.FC<ZoneSelectorProps> = ({
   return (
     <ZoneContext.Provider value={zoneContextObject}>
       <div className='zone-selector'>
-        {isLoading && <Skeleton />}
-        <ZonePanel itemData={apiDisplayData.cities} displayType={DisplayType.CITY} fluid={!hasZones} />
+        <Loading show={isLoading} />
+        <ZonePanel
+          itemData={apiDisplayData.cities.filter(c => c.name.toLowerCase().includes(searchedCity.toLowerCase()))}
+          displayType={DisplayType.CITY}
+          fluid={!hasZones}
+          renderFilter={apiDisplayData.cities.length > 10 ? <CityFilterBy onChange={setSearchedCity} /> : null}
+        />
         {!isEmpty(apiDisplayData.regions) && selectedCity && (
           <ZonePanel itemData={apiDisplayData.regions} displayType={DisplayType.REGION} />
         )}
@@ -504,9 +517,42 @@ const ZoneSelector: React.FC<ZoneSelectorProps> = ({
   );
 };
 
+type CityFilterByProps = {
+  onChange: (keyword: string) => void;
+};
+const CityFilterBy: React.FC<CityFilterByProps> = ({ onChange }) => {
+  const [keyword, setKeyword] = useState('');
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      onChange(keyword);
+    }, 300);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [keyword, onChange]);
+
+  return (
+    <Form.Group>
+      <Form.Label>Filter by</Form.Label>
+      <Form.Control
+        placeholder="City's name"
+        value={keyword}
+        onChange={e => setKeyword(e.target.value)}
+        onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+          }
+        }}
+      />
+    </Form.Group>
+  );
+};
+
+const apolloClient = createApolloClient();
+
 const WrappedZoneSelector: React.FC<ZoneSelectorProps> = props => {
   return (
-    <ApolloProvider client={createApolloClient()}>
+    <ApolloProvider client={apolloClient}>
       <ZoneSelector {...props} />
     </ApolloProvider>
   );

@@ -25,4 +25,6 @@ export enum Country {
   CzechRepublic = 'DJ_CZ',
   Hungary = 'NP_HU',
   Austria = 'MJM_AT',
+  Turkey = 'YS_TR',
+  Denmark = 'HN_DK',
 }

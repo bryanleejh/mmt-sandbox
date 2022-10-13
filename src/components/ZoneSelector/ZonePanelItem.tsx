@@ -1,16 +1,13 @@
-import React, { useRef, ChangeEvent, useEffect } from 'react';
-// import { Bootstrap } from '@deliveryhero/mmt-design-system';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import React, { useRef, useEffect } from 'react'; // ChangeEvent
 import { Stack, Checkbox } from '@deliveryhero/armor';
 import { ListChildComponentProps } from 'react-window';
 import { NavigateNext } from '@material-ui/icons';
 import { paramCase } from 'param-case';
 import theme from '../../styles/theme';
 import { find, includes, propEq } from 'ramda';
-import { ZoneContext } from './ZoneSelector';
-import { ZonePanelContext } from './ZonePanel';
+import { ZoneContext, ZonePanelContext } from './context';
 import { DisplayState } from './types';
-
-// const { Form } = Bootstrap;
 
 const ZonePanelItem = ({ data, index, style }: ListChildComponentProps) => {
   const selectInputBox = useRef<any>(null);
@@ -26,7 +23,7 @@ const ZonePanelItem = ({ data, index, style }: ListChildComponentProps) => {
   const isActive = includes(id, [selectedCity, selectedRegion]);
   const isZoneSelected = Boolean(find(propEq('id', id), formDisplayState[displayType]));
 
-  const { onUpdate, onSelect } = formUpdate[displayType];
+  const { onSelect } = formUpdate[displayType]; // onUpdate
 
   useEffect(() => {
     if (selectInputBox.current) {
@@ -46,7 +43,9 @@ const ZonePanelItem = ({ data, index, style }: ListChildComponentProps) => {
           checked={isZoneSelected}
           disabled={disabled}
           data-testid={`checkbox-${paramCase(item.name)}`}
-          onChange={() => {}}
+          onChange={() => {
+            console.log('test');
+          }}
           label={item.name}
         />
       </Stack>

@@ -46,6 +46,7 @@ export interface ZonePanelProps {
   displayType: DisplayType;
   itemData: City[] | Zone[];
   fluid?: boolean;
+  renderFilter?: React.ReactNode;
 }
 
 export interface QueryResponse {
@@ -77,6 +78,7 @@ export interface FormDisplayState {
   cities: DisplayState[];
   regions: DisplayState[];
   districts: DisplayState[];
+  selectedCity?: string;
 }
 
 export interface FormAreaState {

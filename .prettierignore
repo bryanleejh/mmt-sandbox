@@ -1,0 +1,13 @@
+*.css
+*.scss
+*.mdx
+*.md
+
+node_modules
+
+!.eslintrc.js
+!build.js
+!rollup.config.js
+!.stylelintrc.json
+
+src/__mocks__

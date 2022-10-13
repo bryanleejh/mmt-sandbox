@@ -1,5 +1,7 @@
 /* eslint-disable @typescript-eslint/no-empty-function */
+import React from 'react';
 import { DisplayType } from './enums';
+import { IZoneContext } from './types';
 
 export const defaultZoneContext = {
   formDisplayState: {
@@ -31,3 +33,11 @@ export const defaultZoneContext = {
   },
   disabled: false,
 };
+
+export const ZoneContext = React.createContext<IZoneContext>(defaultZoneContext);
+
+export const defaultZonePanelContext = {
+  displayType: 'cities' as DisplayType,
+};
+
+export const ZonePanelContext = React.createContext(defaultZonePanelContext);

@@ -27,6 +27,8 @@ const countryCodeMap: Record<Country, string> = {
   [Country.CzechRepublic]: 'cz',
   [Country.Hungary]: 'hu',
   [Country.Austria]: 'mj',
+  [Country.Turkey]: 'tr',
+  [Country.Denmark]: 'dk',
 };
 
 export const getCountryCode = () =>

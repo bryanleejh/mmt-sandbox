@@ -1,12 +1,9 @@
 import { getApiUrl } from './constants';
-import { ApolloClient } from 'apollo-client';
-import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloClient, ApolloLink, InMemoryCache, ServerError } from '@apollo/client';
 import { createUploadLink } from 'apollo-upload-client';
-import { onError } from 'apollo-link-error';
-import { ApolloLink } from 'apollo-link';
-import { setContext } from 'apollo-link-context';
+import { setContext } from '@apollo/client/link/context';
+import { onError } from '@apollo/client/link/error';
 import { logoutHelpers } from './helper';
-import { ServerError } from 'apollo-link-http-common';
 import mmtSdk from '../mmtSdk';
 import { getActiveCountry } from '../utils/country';
 
@@ -44,7 +41,8 @@ const createClient = (uri: string) => {
       tokenHeaderLink.concat(geidHeaderLink).concat(
         createUploadLink({
           uri,
-        })
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        }) as any
       ),
     ]),
     cache: new InMemoryCache({
@@ -53,4 +51,5 @@ const createClient = (uri: string) => {
   });
   return client;
 };
+
 export const createApolloClient = () => createClient(getApiUrl());

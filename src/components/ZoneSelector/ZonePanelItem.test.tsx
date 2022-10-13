@@ -1,10 +1,8 @@
 import React from 'react';
 import ZonePanelItem from './ZonePanelItem';
-import { render, fireEvent } from '@testing-library/react';
-import { ZoneContext } from './ZoneSelector';
-import { defaultZoneContext } from './default';
+import { render } from '@testing-library/react';
+import { defaultZoneContext, ZoneContext, ZonePanelContext } from './context';
 import { paramCase } from 'param-case';
-import { ZonePanelContext } from './ZonePanel';
 import { DisplayType } from './enums';
 
 const mockData = [
@@ -66,7 +64,7 @@ describe('ZonePanelItem', () => {
     };
     const { getByTestId } = customRender(<ZonePanelItem {...defaultComponentProps} />, { providerProps });
     const panelItemCheckbox = getByTestId(`checkbox-${paramCase(mockData[0].name)}`);
-    expect(panelItemCheckbox.checked).toEqual(true);
+    expect((panelItemCheckbox as HTMLInputElement).checked).toEqual(true);
   });
 
   it('should render indeterminate state', () => {

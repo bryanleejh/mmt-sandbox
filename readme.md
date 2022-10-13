@@ -2,6 +2,8 @@
 
 provide the common widgets to be used across marketing plugins
 
+_Note: Components migrated to [Armor](https://armor.deliveryhero.com/) are currently in beta release and can be accessed at `v3.0.0-beta.X`. To contribute to the Armor migration, you can raised pull requests targeting the `armor` branch_
+
 ## Install
 
 This package provides a compiled css file that you must include in your root file.

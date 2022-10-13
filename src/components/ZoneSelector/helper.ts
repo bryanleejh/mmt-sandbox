@@ -16,16 +16,16 @@ import {
   omit,
   findIndex,
 } from 'ramda';
-import { DisplayState, FormAreaState, FormRegionState, QueryResponse, UIState } from './types';
+import { DisplayState, FormAreaState, FormDisplayState, FormRegionState, QueryResponse, UIState } from './types';
 
-export const hasIndeterState = (list: DisplayState[]) => Boolean(find(propEq('indeterminate', true), list));
+export const hasIndeterState = (list: DisplayState[]): boolean => Boolean(find(propEq('indeterminate', true), list));
 
 export const transformStateToUI = (
   state: FormAreaState[],
   selectedCity: string,
   selectedRegion: string,
   rawApiData?: QueryResponse[]
-) => {
+): FormDisplayState => {
   const cities = map(
     data => ({
       id: data.city,
@@ -158,16 +158,8 @@ export const generateCityObject = ({
 };
 
 export const transformUIToState = (displayState: UIState, currentFormState: FormAreaState[]) => {
-  const {
-    isLoading,
-    cities,
-    regions,
-    districts,
-    selectedCity,
-    selectedRegion,
-    totalRegions,
-    totalDistricts,
-  } = displayState;
+  const { isLoading, cities, regions, districts, selectedCity, selectedRegion, totalRegions, totalDistricts } =
+    displayState;
   let updatedFormState = clone(currentFormState);
 
   if (and(not(isLoading), isEmpty(cities))) {
@@ -191,7 +183,7 @@ export const transformUIToState = (displayState: UIState, currentFormState: Form
                   districts: map(district => district.id, districts),
                 } as FormRegionState;
               } else {
-                const existingRegionWithDistricts = find(propEq('region', region.id), city?.regions!);
+                const existingRegionWithDistricts = city?.regions && find(propEq('region', region.id), city?.regions);
                 return {
                   ...existingRegionWithDistricts,
                 } as FormRegionState;

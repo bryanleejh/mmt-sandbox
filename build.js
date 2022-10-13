@@ -6,7 +6,7 @@ const paramCase = require('param-case').paramCase;
 StyleDictionary.registerTransform({
   name: 'name/cti/kebabCustom',
   type: 'name',
-  transformer: function(prop, options) {
+  transformer: function (prop, options) {
     return paramCase([options.prefix].concat(prop.path).join(' '));
   },
 });
@@ -14,7 +14,7 @@ StyleDictionary.registerTransform({
 StyleDictionary.registerTransform({
   name: 'value/cssVar',
   type: 'value',
-  transformer: function(prop, options) {
+  transformer: function (prop, options) {
     return 'var(--' + paramCase([options.prefix].concat(prop.path).join(' ')) + ')';
   },
 });

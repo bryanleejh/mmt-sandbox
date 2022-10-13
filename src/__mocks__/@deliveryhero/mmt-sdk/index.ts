@@ -6,7 +6,7 @@ class Sdk {
     };
   }
 
-  onCountryChange(_callback: (activeCountry: ReturnType<Sdk['getActiveCountry']>) => void) {}
+  onCountryChange(callback: (activeCountry: ReturnType<Sdk['getActiveCountry']>) => void) {}
 
   getPluginBaseRoute() {
     return 'https://portal-fp-euw-stg-vt.deliveryhero.io/sg/p/mmt';
@@ -25,8 +25,6 @@ class Sdk {
   }
 
   static getPluginRoles(pluginCode: string, countryCode: string) {
-    console.log('pluginCode', pluginCode);
-    console.log('countryCode', countryCode);
     return [];
   }
 }

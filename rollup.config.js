@@ -7,6 +7,7 @@ import copy from 'rollup-plugin-copy';
 import pkg from './package.json';
 import rollupJson from 'rollup-plugin-json';
 import nodeResolve from 'rollup-plugin-node-resolve';
+import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 
 export default {
   input: ['src/index.ts'],
@@ -28,6 +29,7 @@ export default {
     include: 'src/**',
   },
   plugins: [
+    peerDepsExternal(),
     nodeResolve({ jsnext: true, preferBuiltins: true, browser: true }),
     rollupJson(),
     external(),
@@ -35,9 +37,12 @@ export default {
     typescript({
       rollupCommonJSResolveHack: true,
       clean: true,
+      tsconfigOverride: {
+        exclude: ['**/*.test.tsx', '**/*.test.ts', '**/__mocks__/**/*', '**/setupTests.ts'],
+      },
     }),
     commonjs({
-      include: ['node_modules/**'],
+      nclude: 'node_modules/**',
       namedExports: {
         'node_modules/react/react.js': ['Children', 'Component', 'PropTypes', 'createElement'],
         'node_modules/react-dom/index.js': ['render'],
@@ -48,6 +53,7 @@ export default {
           'ForwardRef',
           'Memo',
         ],
+        'node_modules/react-is/index.js': ['isElement', 'isValidElementType', 'ForwardRef', 'Memo'],
       },
     }),
     sass({

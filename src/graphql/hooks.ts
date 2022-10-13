@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import { useQuery } from '@apollo/react-hooks';
+import { useQuery } from '@apollo/client';
 import { GraphQLError } from 'graphql';
 
-export const useCustomQuery = <ResultType, VariablesType = {}>(
+export const useCustomQuery = <ResultType, VariablesType = unknown>(
   /* eslint-disable @typescript-eslint/no-explicit-any, @typescript-eslint/no-empty-function */
   query: any,
   queryOptions: Record<string, any>,

@@ -1,22 +1,26 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React, { useRef, useContext, useEffect } from 'react';
+// import { Bootstrap } from '@deliveryhero/mmt-design-system';
 import { Stack, Checkbox } from '@deliveryhero/armor';
 import { equals, isEmpty, length, not, complement } from 'ramda';
 import { FixedSizeList as List } from 'react-window';
 import AutoSizer from 'react-virtualized-auto-sizer';
 import ZonePanelItem from './ZonePanelItem';
-import { ZoneContext } from './ZoneSelector';
+import { ZoneContext, ZonePanelContext } from './context';
 import { hasIndeterState } from './helper';
-import { DisplayType } from './enums';
 import { ZonePanelProps } from './types';
 
-export const ZonePanelContext = React.createContext({
-  displayType: 'cities' as DisplayType,
-});
+// const { Form } = Bootstrap;
 
-const ZonePanel: React.FC<ZonePanelProps> = ({ displayType, itemData, fluid = false }: ZonePanelProps) => {
+const ZonePanel: React.FC<ZonePanelProps> = ({
+  displayType,
+  itemData,
+  fluid = false,
+  renderFilter,
+}: ZonePanelProps) => {
   const selectAllInputBox = useRef<any>(null);
 
-  const { formDisplayState, formDisplayData, disabled } = useContext(ZoneContext);
+  const { formDisplayState, formDisplayData, disabled } = useContext(ZoneContext); //formUpdate
 
   // const { onUpdateAll } = formUpdate[displayType];
 
@@ -46,7 +50,9 @@ const ZonePanel: React.FC<ZonePanelProps> = ({ displayType, itemData, fluid = fa
             <Checkbox
               ref={selectAllInputBox}
               value={`all-${displayType}`}
-              onChange={() => {}}
+              onChange={() => {
+                console.log('test');
+              }}
               checked={isAllChecked}
               data-testid={`all-${displayType}`}
               disabled={disabled}
@@ -54,6 +60,7 @@ const ZonePanel: React.FC<ZonePanelProps> = ({ displayType, itemData, fluid = fa
             />
           </Stack>
         </div>
+        {renderFilter && <div className='zone-panel__header-search'>{renderFilter}</div>}
       </div>
       <div className='zone-panel__window'>
         <ZonePanelContext.Provider value={zonePanelContextObject}>

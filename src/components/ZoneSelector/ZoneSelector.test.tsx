@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import React from 'react';
 import mmtSdk from '@deliveryhero/mmt-sdk';
 import { render, fireEvent, cleanup, wait } from '@testing-library/react';
-import { MockedProvider } from '@apollo/react-testing';
+import { MockedProvider } from '@apollo/client/testing';
 import { ZoneSelector } from './index';
 import { Country } from '../../utils/country';
 import { citiesResponseMock, areasResponseMock } from './__mocks__/mock';
@@ -62,11 +63,11 @@ describe('ZoneSelector', () => {
     await wait();
     const allCitiesCheckbox = getByTestId('all-cities');
     expect(allCitiesCheckbox).toBeInTheDocument();
-    expect(allCitiesCheckbox.checked).toEqual(false);
+    expect((allCitiesCheckbox as HTMLInputElement).checked).toEqual(false);
     fireEvent.click(allCitiesCheckbox);
-    expect(allCitiesCheckbox.checked).toEqual(true);
+    expect((allCitiesCheckbox as HTMLInputElement).checked).toEqual(true);
     fireEvent.click(allCitiesCheckbox);
-    expect(allCitiesCheckbox.checked).toEqual(true);
+    expect((allCitiesCheckbox as HTMLInputElement).checked).toEqual(true);
   });
 
   it.skip('should select city', async () => {
@@ -82,11 +83,11 @@ describe('ZoneSelector', () => {
     await wait();
     const cityCheckbox = getByTestId('checkbox-singapore');
     expect(cityCheckbox).toBeInTheDocument();
-    expect(cityCheckbox.checked).toEqual(true);
+    expect((cityCheckbox as HTMLInputElement).checked).toEqual(true);
     fireEvent.click(cityCheckbox);
-    expect(cityCheckbox.checked).toEqual(false);
+    expect((cityCheckbox as HTMLInputElement).checked).toEqual(false);
     fireEvent.click(cityCheckbox);
-    expect(cityCheckbox.checked).toEqual(true);
+    expect((cityCheckbox as HTMLInputElement).checked).toEqual(true);
   });
 
   it.skip('selecting city should render regions', async () => {
@@ -129,11 +130,11 @@ describe('ZoneSelector', () => {
     await wait();
     const allRegionCheckbox = getByTestId('all-regions');
     expect(allRegionCheckbox).toBeInTheDocument();
-    expect(allRegionCheckbox.checked).toEqual(true);
+    expect((allRegionCheckbox as HTMLInputElement).checked).toEqual(true);
     fireEvent.click(allRegionCheckbox);
-    expect(allRegionCheckbox.checked).toEqual(false);
+    expect((allRegionCheckbox as HTMLInputElement).checked).toEqual(false);
     fireEvent.click(allRegionCheckbox);
-    expect(allRegionCheckbox.checked).toEqual(true);
+    expect((allRegionCheckbox as HTMLInputElement).checked).toEqual(true);
   });
 
   it.skip('should select regions', async () => {
@@ -152,11 +153,11 @@ describe('ZoneSelector', () => {
     await wait();
     const regionCheckbox = getByTestId('checkbox-central');
     expect(regionCheckbox).toBeInTheDocument();
-    expect(regionCheckbox.checked).toEqual(true);
+    expect((regionCheckbox as HTMLInputElement).checked).toEqual(true);
     fireEvent.click(regionCheckbox);
-    expect(regionCheckbox.checked).toEqual(false);
+    expect((regionCheckbox as HTMLInputElement).checked).toEqual(false);
     fireEvent.click(regionCheckbox);
-    expect(regionCheckbox.checked).toEqual(true);
+    expect((regionCheckbox as HTMLInputElement).checked).toEqual(true);
   });
 
   it.skip('selecting region should render districts', async () => {
@@ -198,11 +199,11 @@ describe('ZoneSelector', () => {
     fireEvent.click(regionSelector);
     const allDistrictCheckbox = getByTestId('all-districts');
     expect(allDistrictCheckbox).toBeInTheDocument();
-    expect(allDistrictCheckbox.checked).toEqual(true);
+    expect((allDistrictCheckbox as HTMLInputElement).checked).toEqual(true);
     fireEvent.click(allDistrictCheckbox);
-    expect(allDistrictCheckbox.checked).toEqual(false);
+    expect((allDistrictCheckbox as HTMLInputElement).checked).toEqual(false);
     fireEvent.click(allDistrictCheckbox);
-    expect(allDistrictCheckbox.checked).toEqual(true);
+    expect((allDistrictCheckbox as HTMLInputElement).checked).toEqual(true);
   });
 
   it.skip('should select district', async () => {
@@ -224,10 +225,10 @@ describe('ZoneSelector', () => {
     fireEvent.click(regionSelector);
     const districtCheckbox = getByTestId('checkbox-tanjong-pagar');
     expect(districtCheckbox).toBeInTheDocument();
-    expect(districtCheckbox.checked).toEqual(true);
+    expect((districtCheckbox as HTMLInputElement).checked).toEqual(true);
     fireEvent.click(districtCheckbox);
-    expect(districtCheckbox.checked).toEqual(false);
+    expect((districtCheckbox as HTMLInputElement).checked).toEqual(false);
     fireEvent.click(districtCheckbox);
-    expect(districtCheckbox.checked).toEqual(true);
+    expect((districtCheckbox as HTMLInputElement).checked).toEqual(true);
   });
 });
