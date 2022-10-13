@@ -1,0 +1,45 @@
+import { Meta, Story, Preview, Props } from '@storybook/addon-docs/blocks';
+import { action } from '@storybook/addon-actions';
+import { withKnobs, number, boolean } from '@storybook/addon-knobs';
+
+import { ZoneSelector } from '.';
+
+<Meta title="ZoneSelector" component={ZoneSelector} />
+
+
+# Zone Selector
+ZoneSelector are ... (TODO)
+
+
+## Usage
+```js
+import { ZoneSelector } from '@deliveryhero/mmt-widgets';
+
+const isZoneSupported = true;
+
+<ZoneSelector
+  hasZones={isZoneSupported}
+  onSelectValues={({ isAllCitiesSelected, formState }) => {
+    console.log(isAllCitiesSelected);
+    console.log(formState)
+  }}
+  selectedValues={[{ city: 'city-a' }, { city: 'city-b', regions: [{ region: 'region-a' }] }]}
+  disabled={false}
+/>
+```
+
+## Examples
+<Preview>
+  <ZoneSelector
+    hasZones={true}
+    onSelectValues={({ isAllCitiesSelected, formState }) => {
+      console.log(isAllCitiesSelected);
+      console.log(formState)
+    }}
+    selectedValues={[{ city: 'sg-singapore' }]}
+    disabled={false}
+</Preview>
+
+## ZoneSelector API
+
+<Props of={ZoneSelector} />

@@ -1,0 +1,614 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ZoneSelector selecting city should render regions 1`] = `
+<DocumentFragment>
+  <div
+    class="zone-selector"
+  >
+    <div
+      class="zone-panel"
+    >
+      <div
+        class="zone-panel__header"
+      >
+        <div
+          class="zone-panel__header-text"
+        >
+          Cities
+        </div>
+        <div
+          class="zone-panel__header-input"
+        >
+          <div
+            class="custom-control custom-checkbox"
+          >
+            <input
+              checked=""
+              class="custom-control-input"
+              data-testid="all-cities"
+              id="all-cities"
+              type="checkbox"
+              value="all-cities"
+            />
+            <label
+              class="zone-panel__header-label custom-control-label"
+              data-testid="all-cities-label"
+              for="all-cities"
+            >
+              Select all cities
+            </label>
+          </div>
+        </div>
+      </div>
+      <div
+        class="zone-panel__window"
+      >
+        <div>
+          <div
+            style="position: relative; height: 768px; width: 1024px; overflow: auto; will-change: transform; direction: ltr;"
+          >
+            <div
+              style="height: 32px; width: 100%;"
+            >
+              <div
+                class="zone-panel__item zone-panel__item--active"
+                style="position: absolute; left: 0px; top: 0px; height: 32px; width: 100%;"
+              >
+                <div
+                  class="custom-control custom-checkbox"
+                >
+                  <input
+                    checked=""
+                    class="custom-control-input"
+                    data-testid="checkbox-singapore"
+                    id="Singapore"
+                    type="checkbox"
+                    value="sg-singapore"
+                  />
+                  <label
+                    class="custom-control-label"
+                    for="Singapore"
+                  >
+                    Singapore
+                  </label>
+                </div>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                  data-testid="select-singapore"
+                  focusable="false"
+                  style="color: rgb(205, 206, 211);"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="zone-panel"
+    >
+      <div
+        class="zone-panel__header"
+      >
+        <div
+          class="zone-panel__header-text"
+        >
+          Regions
+        </div>
+        <div
+          class="zone-panel__header-input"
+        >
+          <div
+            class="custom-control custom-checkbox"
+          >
+            <input
+              checked=""
+              class="custom-control-input"
+              data-testid="all-regions"
+              id="all-regions"
+              type="checkbox"
+              value="all-regions"
+            />
+            <label
+              class="zone-panel__header-label custom-control-label"
+              data-testid="all-regions-label"
+              for="all-regions"
+            >
+              Select all regions
+            </label>
+          </div>
+        </div>
+      </div>
+      <div
+        class="zone-panel__window"
+      >
+        <div>
+          <div
+            style="position: relative; height: 768px; width: 1024px; overflow: auto; will-change: transform; direction: ltr;"
+          >
+            <div
+              style="height: 64px; width: 100%;"
+            >
+              <div
+                class="zone-panel__item "
+                style="position: absolute; left: 0px; top: 0px; height: 32px; width: 100%;"
+              >
+                <div
+                  class="custom-control custom-checkbox"
+                >
+                  <input
+                    checked=""
+                    class="custom-control-input"
+                    data-testid="checkbox-central"
+                    id="Central"
+                    type="checkbox"
+                    value=""
+                  />
+                  <label
+                    class="custom-control-label"
+                    for="Central"
+                  >
+                    Central
+                  </label>
+                </div>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                  data-testid="select-central"
+                  focusable="false"
+                  style="color: rgb(205, 206, 211);"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="zone-panel__item "
+                style="position: absolute; left: 0px; top: 32px; height: 32px; width: 100%;"
+              >
+                <div
+                  class="custom-control custom-checkbox"
+                >
+                  <input
+                    checked=""
+                    class="custom-control-input"
+                    data-testid="checkbox-east"
+                    id="East"
+                    type="checkbox"
+                    value=""
+                  />
+                  <label
+                    class="custom-control-label"
+                    for="East"
+                  >
+                    East
+                  </label>
+                </div>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                  data-testid="select-east"
+                  focusable="false"
+                  style="color: rgb(205, 206, 211);"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ZoneSelector selecting region should render districts 1`] = `
+<DocumentFragment>
+  <div
+    class="zone-selector"
+  >
+    <div
+      class="zone-panel"
+    >
+      <div
+        class="zone-panel__header"
+      >
+        <div
+          class="zone-panel__header-text"
+        >
+          Cities
+        </div>
+        <div
+          class="zone-panel__header-input"
+        >
+          <div
+            class="custom-control custom-checkbox"
+          >
+            <input
+              checked=""
+              class="custom-control-input"
+              data-testid="all-cities"
+              id="all-cities"
+              type="checkbox"
+              value="all-cities"
+            />
+            <label
+              class="zone-panel__header-label custom-control-label"
+              data-testid="all-cities-label"
+              for="all-cities"
+            >
+              Select all cities
+            </label>
+          </div>
+        </div>
+      </div>
+      <div
+        class="zone-panel__window"
+      >
+        <div>
+          <div
+            style="position: relative; height: 768px; width: 1024px; overflow: auto; will-change: transform; direction: ltr;"
+          >
+            <div
+              style="height: 32px; width: 100%;"
+            >
+              <div
+                class="zone-panel__item zone-panel__item--active"
+                style="position: absolute; left: 0px; top: 0px; height: 32px; width: 100%;"
+              >
+                <div
+                  class="custom-control custom-checkbox"
+                >
+                  <input
+                    checked=""
+                    class="custom-control-input"
+                    data-testid="checkbox-singapore"
+                    id="Singapore"
+                    type="checkbox"
+                    value="sg-singapore"
+                  />
+                  <label
+                    class="custom-control-label"
+                    for="Singapore"
+                  >
+                    Singapore
+                  </label>
+                </div>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                  data-testid="select-singapore"
+                  focusable="false"
+                  style="color: rgb(205, 206, 211);"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="zone-panel"
+    >
+      <div
+        class="zone-panel__header"
+      >
+        <div
+          class="zone-panel__header-text"
+        >
+          Regions
+        </div>
+        <div
+          class="zone-panel__header-input"
+        >
+          <div
+            class="custom-control custom-checkbox"
+          >
+            <input
+              checked=""
+              class="custom-control-input"
+              data-testid="all-regions"
+              id="all-regions"
+              type="checkbox"
+              value="all-regions"
+            />
+            <label
+              class="zone-panel__header-label custom-control-label"
+              data-testid="all-regions-label"
+              for="all-regions"
+            >
+              Select all regions
+            </label>
+          </div>
+        </div>
+      </div>
+      <div
+        class="zone-panel__window"
+      >
+        <div>
+          <div
+            style="position: relative; height: 768px; width: 1024px; overflow: auto; will-change: transform; direction: ltr;"
+          >
+            <div
+              style="height: 64px; width: 100%;"
+            >
+              <div
+                class="zone-panel__item zone-panel__item--active"
+                style="position: absolute; left: 0px; top: 0px; height: 32px; width: 100%;"
+              >
+                <div
+                  class="custom-control custom-checkbox"
+                >
+                  <input
+                    checked=""
+                    class="custom-control-input"
+                    data-testid="checkbox-central"
+                    id="Central"
+                    type="checkbox"
+                    value=""
+                  />
+                  <label
+                    class="custom-control-label"
+                    for="Central"
+                  >
+                    Central
+                  </label>
+                </div>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                  data-testid="select-central"
+                  focusable="false"
+                  style="color: rgb(205, 206, 211);"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="zone-panel__item "
+                style="position: absolute; left: 0px; top: 32px; height: 32px; width: 100%;"
+              >
+                <div
+                  class="custom-control custom-checkbox"
+                >
+                  <input
+                    checked=""
+                    class="custom-control-input"
+                    data-testid="checkbox-east"
+                    id="East"
+                    type="checkbox"
+                    value=""
+                  />
+                  <label
+                    class="custom-control-label"
+                    for="East"
+                  >
+                    East
+                  </label>
+                </div>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                  data-testid="select-east"
+                  focusable="false"
+                  style="color: rgb(205, 206, 211);"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div
+      class="zone-panel-fluid"
+    >
+      <div
+        class="zone-panel__header"
+      >
+        <div
+          class="zone-panel__header-text"
+        >
+          Districts
+        </div>
+        <div
+          class="zone-panel__header-input"
+        >
+          <div
+            class="custom-control custom-checkbox"
+          >
+            <input
+              checked=""
+              class="custom-control-input"
+              data-testid="all-districts"
+              id="all-districts"
+              type="checkbox"
+              value="all-districts"
+            />
+            <label
+              class="zone-panel__header-label custom-control-label"
+              data-testid="all-districts-label"
+              for="all-districts"
+            >
+              Select all districts
+            </label>
+          </div>
+        </div>
+      </div>
+      <div
+        class="zone-panel__window"
+      >
+        <div>
+          <div
+            style="position: relative; height: 768px; width: 1024px; overflow: auto; will-change: transform; direction: ltr;"
+          >
+            <div
+              style="height: 64px; width: 100%;"
+            >
+              <div
+                class="zone-panel__item "
+                style="position: absolute; left: 0px; top: 0px; height: 32px; width: 100%;"
+              >
+                <div
+                  class="custom-control custom-checkbox"
+                >
+                  <input
+                    checked=""
+                    class="custom-control-input"
+                    data-testid="checkbox-tanjong-pagar"
+                    id="Tanjong Pagar"
+                    type="checkbox"
+                    value=""
+                  />
+                  <label
+                    class="custom-control-label"
+                    for="Tanjong Pagar"
+                  >
+                    Tanjong Pagar
+                  </label>
+                </div>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                  data-testid="select-tanjong-pagar"
+                  focusable="false"
+                  style="color: rgb(205, 206, 211);"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                  />
+                </svg>
+              </div>
+              <div
+                class="zone-panel__item "
+                style="position: absolute; left: 0px; top: 32px; height: 32px; width: 100%;"
+              >
+                <div
+                  class="custom-control custom-checkbox"
+                >
+                  <input
+                    checked=""
+                    class="custom-control-input"
+                    data-testid="checkbox-chinatown"
+                    id="Chinatown"
+                    type="checkbox"
+                    value=""
+                  />
+                  <label
+                    class="custom-control-label"
+                    for="Chinatown"
+                  >
+                    Chinatown
+                  </label>
+                </div>
+                <svg
+                  aria-hidden="true"
+                  class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+                  data-testid="select-chinatown"
+                  focusable="false"
+                  style="color: rgb(205, 206, 211);"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+                  />
+                </svg>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ZoneSelector should render 1`] = `
+<DocumentFragment>
+  <div
+    class="zone-selector"
+  >
+    <div
+      class="loading--component"
+    >
+      <div
+        class="spinner-border"
+      />
+    </div>
+    <div
+      class="zone-panel"
+    >
+      <div
+        class="zone-panel__header"
+      >
+        <div
+          class="zone-panel__header-text"
+        >
+          Cities
+        </div>
+        <div
+          class="zone-panel__header-input"
+        >
+          <div
+            class="custom-control custom-checkbox"
+          >
+            <input
+              checked=""
+              class="custom-control-input"
+              data-testid="all-cities"
+              id="all-cities"
+              type="checkbox"
+              value="all-cities"
+            />
+            <label
+              class="zone-panel__header-label custom-control-label"
+              data-testid="all-cities-label"
+              for="all-cities"
+            >
+              Select all cities
+            </label>
+          </div>
+        </div>
+      </div>
+      <div
+        class="zone-panel__window"
+      >
+        <div>
+          <div
+            style="position: relative; height: 768px; width: 1024px; overflow: auto; will-change: transform; direction: ltr;"
+          >
+            <div
+              style="height: 0px; width: 100%;"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</DocumentFragment>
+`;

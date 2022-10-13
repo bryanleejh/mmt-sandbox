@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ZonePanelItem should render a single item 1`] = `
+<DocumentFragment>
+  <div
+    class="zone-panel__item "
+  >
+    <div
+      class="custom-control custom-checkbox"
+    >
+      <input
+        class="custom-control-input"
+        data-testid="checkbox-singapore"
+        id="Singapore"
+        type="checkbox"
+        value="sg-singapore"
+      />
+      <label
+        class="custom-control-label"
+        for="Singapore"
+      >
+        Singapore
+      </label>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+      data-testid="select-singapore"
+      focusable="false"
+      style="color: rgb(205, 206, 211);"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ZonePanelItem should render disabled state 1`] = `
+<DocumentFragment>
+  <div
+    class="zone-panel__item "
+  >
+    <div
+      class="custom-control custom-checkbox"
+    >
+      <input
+        class="custom-control-input"
+        data-testid="checkbox-singapore"
+        disabled=""
+        id="Singapore"
+        type="checkbox"
+        value="sg-singapore"
+      />
+      <label
+        class="custom-control-label"
+        for="Singapore"
+      >
+        Singapore
+      </label>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+      data-testid="select-singapore"
+      focusable="false"
+      style="color: rgb(205, 206, 211);"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;
+
+exports[`ZonePanelItem should render indeterminate state 1`] = `
+<DocumentFragment>
+  <div
+    class="zone-panel__item "
+  >
+    <div
+      class="custom-control custom-checkbox"
+    >
+      <input
+        checked=""
+        class="custom-control-input"
+        data-testid="checkbox-singapore"
+        id="Singapore"
+        type="checkbox"
+        value="sg-singapore"
+      />
+      <label
+        class="custom-control-label"
+        for="Singapore"
+      >
+        Singapore
+      </label>
+    </div>
+    <svg
+      aria-hidden="true"
+      class="MuiSvgIcon-root MuiSvgIcon-fontSizeSmall"
+      data-testid="select-singapore"
+      focusable="false"
+      style="color: rgb(205, 206, 211);"
+      viewBox="0 0 24 24"
+    >
+      <path
+        d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z"
+      />
+    </svg>
+  </div>
+</DocumentFragment>
+`;

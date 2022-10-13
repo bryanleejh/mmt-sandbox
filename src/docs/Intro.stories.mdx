@@ -1,0 +1,57 @@
+import { Meta } from '@storybook/addon-docs/blocks';
+
+<Meta title="Intro" id="1" />
+
+# MMT Component Design System
+
+A collection of design resources and reusable components for creating a cohesive design across the Foodpanda Marketing Platform.
+You can read more about this project on [Confluence](https://confluence.deliveryhero.com/display/GLOBAL/MMT+Component+Design+System).
+
+
+## Getting Started
+
+### Installing
+
+To use the design system in your project.
+
+```
+yarn add --save @deliveryhero/mmt-design-system
+```
+
+### Working with styles
+This package provides a compiled css file that you must include in your root file.
+```js
+    import '@deliveryhero/mmt-design-system/build/styles.css';
+```
+
+If you need access to variables, include the `variables.scss` file in your `scss` files.
+
+```js
+    @import '@deliveryhero/mmt-design-system/build/variables.scss';
+```
+
+You can also read the variables from your javascript files.
+```js
+import { Tokens } from 'mmt-design-system';
+
+console.log(Tokens.ColorBrand800);
+
+```
+
+### Overriding tokens
+You may need to use a different brand color or font family. You can declare the tokens in your project and the DS will use them.
+This is an example of how to override the brand color:
+```css
+:root {
+  --color-brand-100: #fae8eb;
+  --color-brand-200: #f5d1d8;
+  --color-brand-300: #f1b9c4;
+  --color-brand-400: #eca2b1;
+  --color-brand-500: #d57da1;
+  --color-brand-600: #d54883;
+  --color-brand-700: #d70f63;
+  --color-brand-800: #911029;
+  --color-brand-900: #680c1e;
+```
+This is the full list of available tokens.
+Note that javascript declarations are read-only and won't be overridden and you need to do it separately.

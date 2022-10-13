@@ -1,0 +1,108 @@
+@import '~@deliveryhero/mmt-design-system/build/variables';
+
+.zone-selector {
+  display: flex;
+  height: 330px;
+  border: 1px solid $color-grey-200;
+  border-radius: 0.25rem;
+
+  .custom-control.custom-checkbox > * {
+    cursor: pointer;
+  }
+}
+
+.zone-panel {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-width: 200px;
+  max-width: 240px;
+  width: 100%;
+  border-right: 1px solid $color-grey-200;
+
+  &__header {
+    text-align: left;
+    margin: 16px 0 8px;
+  }
+
+  &__header-text {
+    font-size: 14px;
+    font-weight: 500;
+    height: 20px;
+    letter-spacing: 0.3px;
+    line-height: 20px;
+    color: $color-brand-700;
+    margin-bottom: 8px;
+    padding-left: 16px;
+    text-transform: capitalize;
+  }
+
+  &__header-input {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    padding-left: 16px;
+
+    & > .custom-control.custom-checkbox {
+      transform: translateY(-2px);
+    }
+
+    &:hover {
+      background-color: $color-active-on-white;
+    }
+  }
+
+  &__header-label {
+    text-transform: initial;
+  }
+
+  &__window {
+    text-align: left;
+    height: 100%;
+    width: 100%;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 8px 0 16px;
+    cursor: pointer;
+
+    & > .custom-control.custom-checkbox {
+      transform: translateY(-2px);
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    &--active {
+      background-color: $color-active-on-white;
+    }
+
+    &:hover {
+      background-color: $color-active-on-white;
+    }
+  }
+
+  .custom-control-label {
+    text-overflow: ellipsis;
+  }
+}
+
+.zone-panel-fluid {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+
+  svg.MuiSvgIcon-root.MuiSvgIcon-fontSizeSmall {
+    display: none;
+  }
+
+  .zone-panel__item-text {
+    min-width: none;
+    max-width: none;
+    width: 100%;
+    text-overflow: initial;
+  }
+}
